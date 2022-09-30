@@ -1,12 +1,11 @@
 <?php
-// api/tests/BooksTest.php
 
 namespace App\Tests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Prestation;
 
-class PrestationsTest extends ApiTestCase
+class ApiTest extends ApiTestCase
 {
     // This trait provided by AliceBundle will take care of refreshing the database content to a known state before each test
 
