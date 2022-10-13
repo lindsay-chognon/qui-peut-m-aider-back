@@ -22,10 +22,10 @@ class Disponibilites
     #[ORM\OneToOne(mappedBy: 'disponibilite', targetEntity: Jour::class, cascade: ['persist', 'remove'])]
     private $jour;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $datetime_debut;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $datetime_fin;
 
     public function getId(): ?int
