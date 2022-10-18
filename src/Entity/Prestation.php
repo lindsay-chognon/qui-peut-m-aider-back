@@ -22,7 +22,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Get(
             security: "is_granted('ROLE_ADMIN')"
         ),
-        new GetCollection()
     ],
     normalizationContext: ['groups' => ['prestation']],
     denormalizationContext: ['prestation'],
