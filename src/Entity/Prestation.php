@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\Repository\PrestationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,12 +16,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new Post(
-            security: "is_granted('ROLE_ADMIN')",
+            security: "is_granted('ROLE_USER')",
             securityMessage: 'Only admins can add books.'
         ),
         new Get(
             security: "is_granted('ROLE_ADMIN')"
-        )
+        ),
     ],
     normalizationContext: ['groups' => ['prestation']],
     denormalizationContext: ['prestation'],
