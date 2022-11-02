@@ -46,9 +46,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
 
-    access_control:
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+    # IMPORTANT : enlever après dev, juste pour avoir accès à l'interface api pendant le dev
+    #access_control:
+        #- { path: ^/api/login, roles: PUBLIC_ACCESS }
+        #- { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
