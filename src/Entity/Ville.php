@@ -28,10 +28,15 @@ class Ville
     private $code_postal;
 
     #[ORM\OneToMany(mappedBy: 'ville', targetEntity: Prestation::class)]
+    #[Groups('prestation')]
     private $prestations;
 
     #[ORM\OneToMany(mappedBy: 'ville', targetEntity: Adresse::class)]
+    #[Groups('prestation')]
     private $adresses;
+
+    #[ORM\Column(length: 5)]
+    private ?string $code_commune = null;
 
     public function __construct()
     {
@@ -124,6 +129,18 @@ class Ville
                 $adress->setVille(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCodeCommune(): ?string
+    {
+        return $this->code_commune;
+    }
+
+    public function setCodeCommune(string $code_commune): self
+    {
+        $this->code_commune = $code_commune;
 
         return $this;
     }
