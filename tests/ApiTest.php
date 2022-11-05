@@ -21,7 +21,5 @@ class ApiTest extends ApiTestCase
         // Check 200 response
         $this->assertEquals(200, $response->getStatusCode());
 
-        // Asserts that the returned JSON is validated by the JSON Schema generated for this resource by API Platform
-        $this->assertMatchesResourceCollectionJsonSchema(Prestation::class);
     }
 }
