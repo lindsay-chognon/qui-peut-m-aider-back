@@ -14,18 +14,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PrestationRepository::class)]
 #[ApiResource(
-    operations: [
+   /* operations: [
         new Post(
             security: "is_granted('ROLE_USER')",
             securityMessage: 'Only admins can add books.'
         ),
         new Get(
-            security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_USER')"
         ),
-    ],
+    ],*/
     normalizationContext: ['groups' => ['prestation']],
     denormalizationContext: ['prestation'],
     security: "is_granted('ROLE_USER')",
+
 )]
 
 class Prestation
@@ -77,6 +78,10 @@ class Prestation
     #[ORM\JoinColumn(nullable: false)]
     #[Groups('prestation')]
     private $ville;
+
+    #[ORM\ManyToOne(inversedBy: 'prestations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $User = null;
 
     public function __construct()
     {
@@ -260,6 +265,18 @@ class Prestation
     public function setVille(?Ville $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }
